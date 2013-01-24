@@ -19,26 +19,11 @@ EmTest.Post = DS.Model.extend({
 
 EmTest.Router.map(function() {
 	this.route('about');
-	this.resource('posts', function() {
-		this.resource('post', { path: '/:post_id' } );	
-	});
-	this.resource('title', {path: '/:title'} );
+	this.resource('post', {path: '/:title'} );
 	
 });
 
-EmTest.PostsRoute = Em.Route.extend({
-	model: function() {
-		return EmTest.Post.find();
-	}
-});
-
 EmTest.PostRoute = Em.Route.extend({
-	model: function(params) {
-		return EmTest.Post.find(params.post_id);
-	}
-});
-
-EmTest.TitleRoute = Em.Route.extend({
 	model: function(params) {
 		console.log(params);
 		return EmTest.Post.find({ title : params.title });
