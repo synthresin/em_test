@@ -34,11 +34,14 @@
 	<script type="text/x-handlebars" data-template-name="posts">
 		<h2>posts page</h2>
 		<p>{{model.length}} 개의 포스트가 있당..</p>
+
 		<ul>
-			{{#each post in model}}
-				<li>{{#linkTo post post}}{{post.title}} / {{post.content}}{{/linkTo}}</li>
+			{{#each pos in model}}
+				<li>{{#linkTo post pos}}{{pos.title}} / {{pos.content}}{{/linkTo}}</li>
 			{{/each}}
 		</ul>
+
+		{{outlet}}
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="post">
