@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EmTest</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+ 
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<script type="text/x-handlebars">
+		<header>
+			<h1>{{#linkTo "index" }}Synthresin{{/linkTo}}</h1>
+			<nav>{{#linkTo "about" }}about{{/linkTo}}, {{#linkTo "posts" }}posts{{/linkTo}}</nav>
+		</header>
+
+		<section>
+			{{outlet}}
+		</section>
+		<footer>
+			<p>2013 synthresin.</p>
+		</footer>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="index">
+		<h2>index page</h2>
+		<p>인덱스 페이지입니당.</p>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="about">
+		<h2>about page</h2>
+		<p>어바웃 페이지입니다.</p>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="posts">
+		<h2>posts page</h2>
+		<p>{{model.length}} 개의 포스트가 있당..</p>
+		<ul>
+			{{#each post in model}}
+				<li>{{#linkTo post post}}{{post.title}} / {{post.content}}{{/linkTo}}</li>
+			{{/each}}
+		</ul>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="post">
+		<h3>{{model.title}}</h3>
+		<p>{{model.content}}</p>
+	</script>
+
+	<%= javascript_include_tag "application" %>
+</body>
+</html>
