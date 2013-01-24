@@ -22,7 +22,7 @@ EmTest.Router.map(function() {
 	this.resource('posts', function() {
 		this.resource('post', { path: '/:post_id' } );	
 	});
-	this.resource('title');
+	this.resource('title', {path: '/:title'} );
 	
 });
 
@@ -39,7 +39,8 @@ EmTest.PostRoute = Em.Route.extend({
 });
 
 EmTest.TitleRoute = Em.Route.extend({
-	model: function() {
-		return EmTest.Post.find();
+	model: function(params) {
+		console.log(params);
+		return EmTest.Post.find({ title : params.title });
 	}
 });
