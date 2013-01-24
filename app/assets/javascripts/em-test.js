@@ -34,6 +34,5 @@ EmTest.PostsRoute = Em.Route.extend({
 EmTest.PostRoute = Em.Route.extend({
 	model: function(params) {
 		return EmTest.Post.find(params.post_id);
-	
 	}
 });
